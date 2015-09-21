@@ -25,12 +25,6 @@ class String
     create_vectors(original_dict, compared_dict)
   end
 
-  def create_vectors(original_dict, compared_dict)
-    a = Vector.elements(original_dict.values)
-    b = Vector.elements(compared_dict.values)
-    cosine_similarity = a.dot(b)/(a.magnitude * b.magnitude)
-  end
-
   def compare_chars(string)
     original_chars = self.chars
     compared_chars = string.chars
@@ -46,6 +40,12 @@ class String
       compared_dict[word] += compared_chars.count(word)
     end
     create_vectors(original_dict, compared_dict)
+  end
+
+  def create_vectors(original_dict, compared_dict)
+    a = Vector.elements(original_dict.values)
+    b = Vector.elements(compared_dict.values)
+    cosine_similarity = a.dot(b)/(a.magnitude * b.magnitude)
   end
 end
 
