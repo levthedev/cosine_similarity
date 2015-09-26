@@ -37,7 +37,9 @@ class String
     all_chars      = (original_chars + compared_chars).uniq
     all_chars.each do |word|
       original_dict[word] += original_chars.count(word)
+      original_dict
       compared_dict[word] += compared_chars.count(word)
+      compared_dict
     end
     create_vectors(original_dict, compared_dict)
   end
@@ -45,9 +47,10 @@ class String
   def create_vectors(original_dict, compared_dict)
     a = Vector.elements(original_dict.values)
     b = Vector.elements(compared_dict.values)
+    a.dot(b)
+    a.magnitude * b.magnitude
     cosine_similarity = a.dot(b)/(a.magnitude * b.magnitude)
   end
 end
 
-puts "He is the hero Gotham deserves".compare("but not the one it needs right now")
-puts "rob".compare("bob")
+puts "hello".compare("hola")
